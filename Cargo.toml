@@ -9,5 +9,6 @@ edition = "2024"
 members = [
     ".",
     "guessing_game",
-    "variables"
+    "variables",
+    "ownership"
 ]
