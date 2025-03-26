@@ -86,5 +86,40 @@ fn main() {
     let element = list_a[index];
 
     println!("index {index} = {element}");
+    println!("==========3-3============");
 
+    another_function(5);
+    print_labeled_measurement(10, 'h');
+
+    let statement = 6;
+    // let statement1 = (let statement2 = 6);
+    let expression = {
+        let statement = 3;
+        statement + 1
+    };
+    println!("value = {expression}");
+
+    let five = five();
+    println!("{five}");
+
+    let plus_number = plus_one(five);
+    println!("{plus_number}");
+
+}
+
+fn another_function(x: i32) {
+    println!("another fn!");
+    println!("x = {x}");
+}
+
+fn print_labeled_measurement(value: i32, unit_label: char) {
+    println!("measurement = {value}{unit_label}");
+}
+
+fn five() -> i32 {
+    5
+}
+
+fn plus_one(x: i32) -> i32 {
+    x + 1
 }
