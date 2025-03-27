@@ -33,13 +33,56 @@ fn main() {
     let s1 = String::from("hello");
     let (s2, len) = calculate_length(s1);
 
-    println!("{s2} length = {len}")
+    println!("{s2} length = {len}");
 
+    let s1 = String::from("hello");
+    let len = calculate_length_reference(&s1);
+
+    println!("s1={s1} len={len}");
+
+    let mut s = String::from("hello");
+    change(&mut s);
+    println!("{s}");
+
+    // {
+    //     let r1 = &mut s;
+    // }
+    
+    // let r2 = &mut s;
+
+    let mut s = String::from("hello");
+
+    let r1 = &s;
+    let r2 = &s;
+    println!("{r1} {r2}");
+
+    let r3 = &mut s;
+
+    println!("{r3}");
+
+    let reference_to_nothing = dangle();
+
+    println!("{reference_to_nothing}")
+
+}
+
+fn dangle() -> String {
+    let s = String::from("hello");
+    // &s
+    s
+}
+
+fn change(some_str: &mut String) {
+    some_str.push_str(", world");
 }
 
 fn calculate_length(s: String) -> (String, usize) {
     let length = s.len();
     (s, length)
+}
+
+fn calculate_length_reference(s: &String) -> usize {
+    s.len()
 }
 
 fn takes_ownership(some_string: String) {
