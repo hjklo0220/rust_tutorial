@@ -62,8 +62,53 @@ fn main() {
 
     let reference_to_nothing = dangle();
 
-    println!("{reference_to_nothing}")
+    println!("{reference_to_nothing}");
 
+    println!("========slicing=========");
+
+    let s = String::from("hello world");
+    let word = first_word(&s);
+    // s.clear();
+    println!("{s} {word}");
+
+    let s = String::from("hello world");
+    let hello = &s[0..5];
+    let world = &s[6..11];
+    println!("{hello} {world}");
+    
+    let s = "hello world";
+
+    let my_string = String::from("qwert poiuy");
+
+    let word = first_word(&my_string[0..6]);
+    let word = first_word(&my_string[..]);
+
+    println!("word: {word}");
+
+    let my_string_literal = "hel lo world";
+    let word = first_word(&my_string_literal[..]);
+    let word = first_word(&my_string_literal[0..6]);
+    let word = first_word(my_string_literal);
+
+    println!("{word}");
+
+    let a = [1, 2, 3, 4, 5];
+    let slice = &a[1..3];
+
+    assert_eq!(slice, &[2,3,4]);
+
+
+}
+
+fn first_word(s: &str) -> &str {
+    let bytes = s.as_bytes();
+
+    for (i, &item) in bytes.iter().enumerate() {
+        if item == b' ' {
+            return &s[0..i];
+        }
+    }
+    &s[..]
 }
 
 fn dangle() -> String {
