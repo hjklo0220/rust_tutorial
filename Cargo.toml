@@ -11,5 +11,6 @@ members = [
     "guessing_game",
     "variables",
     "ownership",
-    "struct"
+    "struct",
+    "enums"
 ]
