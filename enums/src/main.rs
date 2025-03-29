@@ -1,3 +1,5 @@
+mod match_module;
+
 enum IpAddKind {
     V4,
     V6,
@@ -31,6 +33,8 @@ impl Message {
 // }
 
 fn main() {
+    match_module::match_module_main();
+
     let some_number = Some(5);
     let some_char = Some('e');
 
