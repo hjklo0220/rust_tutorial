@@ -11,7 +11,7 @@ enum Coin {
     Quarter(UsState),
 }
 
-fn value_in_cents(coin: Coin) -> u8 {
+fn value_in_cents(coin: &Coin) -> u8 {
     match coin {
         Coin::Penny => {
             println!("lucky penny!");
@@ -37,11 +37,11 @@ pub fn match_module_main() {
     println!("in match_module");
 
     let coin = Coin::Penny;
-    let value = value_in_cents(coin);
+    let value = value_in_cents(&coin);
     println!("{}", value);
 
-    
-    let value2 = value_in_cents(Coin::Quarter(UsState::Alaska));
+    let coin2 = Coin::Quarter(UsState::Alaska);
+    let value2 = value_in_cents(&coin2);
     println!("{}", value2);
 
     let five = Some(5);
@@ -57,7 +57,25 @@ pub fn match_module_main() {
         _ => (),
     }
 
-    println!("============")
+    let config_max = Some(3u8);
+    match config_max {
+        Some(max) => println!("The maximun is configured to be {max}"),
+        _ => (),
+    }
+
+    if let Some(max) = config_max {
+        println!("The maximun is configured to be {max}")    
+    }
+
+    let mut count = 0;
+    if let Coin::Quarter(state) = coin {
+        println!("State quarter from {:?}", state);
+    } else {
+        count += 1;
+    }
+    println!("count = {count}");
+
+    println!("============");
 }
 
 fn add_fancy_hat() {}
