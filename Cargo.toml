@@ -12,5 +12,6 @@ members = [
     "variables",
     "ownership",
     "struct",
-    "enums"
+    "enums",
+    "packages"
 ]
