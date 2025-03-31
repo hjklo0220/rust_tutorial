@@ -13,5 +13,6 @@ members = [
     "ownership",
     "struct",
     "enums",
-    "packages"
+    "packages",
+    "packages/restaurant"
 ]
