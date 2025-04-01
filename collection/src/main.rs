@@ -1,4 +1,4 @@
-use std::fmt::format;
+use std::{fmt::format, hash::Hash, iter::Successors};
 
 fn main() {
     let mut v: Vec<i32> = Vec::new();
@@ -91,5 +91,50 @@ fn main() {
     for b in "러스트".bytes() {
         println!("{b}");
     }
+
+    use std::collections::HashMap;
+
+    let mut scores = HashMap::new();
+
+    // scores.insert(String::from("blue"), 10);
+    scores.insert(String::from("red"), 50);
+    scores.insert(String::from("yellow"), 100);
+
+    let team_name = String::from("blue");
+    let score = scores.get(&team_name).copied().unwrap_or(0);
+
+    println!("{score}");
+
+    for (k, v) in &scores {
+        println!("{k}: {v}");
+    }
+
+    let field_name = String::from("Favorite color");
+    let field_value = String::from("Black");
+
+    let mut map = HashMap::new();
+    map.insert(&field_name, &field_value);
+
+    println!("{field_name}");
+
+    scores.insert(String::from("Blue"), 10);
+    scores.insert(String::from("Blue"), 25);
+
+    scores.entry(String::from("red")).or_insert(123);
+    scores.entry(String::from("white")).or_insert(123);
+
+    println!("{:?}", scores);
+
+    let text = "hello world wonderful world";
+
+    let mut map = HashMap::new();
+
+    for word in text.split_whitespace() {
+        let count = map.entry(word).or_insert(0);
+        *count += 1;
+    }
+
+    println!("{:?}", map);
+
 
 }
