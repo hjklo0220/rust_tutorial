@@ -1,4 +1,5 @@
-use std::{fmt::format, hash::Hash, iter::Successors};
+use core::num;
+use std::{collections::HashMap, fmt::format, hash::Hash, iter::Successors};
 
 fn main() {
     let mut v: Vec<i32> = Vec::new();
@@ -119,6 +120,9 @@ fn main() {
 
     scores.insert(String::from("Blue"), 10);
     scores.insert(String::from("Blue"), 25);
+    println!("==");
+    println!("{}", scores.entry(String::from("red")).or_insert(123));
+    println!("==");
 
     scores.entry(String::from("red")).or_insert(123);
     scores.entry(String::from("white")).or_insert(123);
@@ -136,5 +140,47 @@ fn main() {
 
     println!("{:?}", map);
 
+    let num_list = [1, 5, 2, 8, 3, 4, 5, 5];
+    println!("{}", median(&num_list));
 
+    println!("mod: {}", mode(&num_list));
+}
+
+// 정렬했을 때 가장 가운데 위치한 값
+fn median(num_list: &[i32]) -> i32 {
+    let mut num_vec = Vec::from(num_list);
+    num_vec.sort();
+
+    let len = num_vec.len();
+    if len % 2 == 0 {
+        let right = len / 2;
+        let left = right - 1;
+        println!("짝수: median: {} {} ", num_vec[right], num_vec[left]);
+    } else {
+        println!("median: {}", num_vec[len/2]);
+    }
+    0
+}
+
+//가장 많이 발생한 값
+fn mode(num_list: &[i32]) -> i32 {
+    let mut map = HashMap::new();
+
+    for i in num_list {
+        let count = map.entry(i).or_insert(0);
+        *count += 1
+    }
+
+    println!("{:?}", map);
+
+    let mut max_count = 0;
+    let mut max_num = 0;
+    
+    for (&num, &count) in &map {
+        if count > max_count {
+            max_count = count;
+            max_num = *num;
+        }
+    }
+    max_num
 }
