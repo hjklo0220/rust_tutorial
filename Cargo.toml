@@ -14,5 +14,6 @@ members = [
     "struct",
     "enums",
     "packages",
-    "packages/restaurant"
+    "packages/restaurant",
+    "collection"
 ]
