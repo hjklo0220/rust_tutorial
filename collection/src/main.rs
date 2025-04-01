@@ -45,4 +45,51 @@ fn main() {
         SpreadsheetCell::Text(String::from("blue")),
     ];
 
+    let mut s = String::new();
+    let data = "inital contents";
+
+    let s = data.to_string();
+
+    let s = "inital contents".to_string();
+    println!("{s}");
+
+    let mut s = String::from("foo");
+    s.push_str("bar");
+
+    let mut s1 = String::from("test");
+    let s2 = "bar";
+    s1.push_str(s2);
+    println!("s2={s2}");
+    s1.push('a');
+    println!("{s1}");
+
+    let s1 = String::from("hello, ");
+    let s2 = String::from("world");
+    let s3 = s1 + &s2;
+
+    println!("{s3}");
+
+    let s1 = String::from("tic");
+    let s2 = String::from("tac");
+    let s3 = String::from("toe");
+
+    // let s = s1 + "-" + &s2 + "-" + &s3;
+    let s = format!("{s1}-{s2}-{s3}");
+    println!("{s}");
+
+    let s1 = String::from("hello");
+    // let h = s1[0];
+    
+    let hello = "안녕하세요";
+    let s = &hello[0..6];
+    // println!("{s}");
+
+    for c in "폭싹속았쑤다".chars() {
+        println!("{c}");
+    }
+
+    for b in "러스트".bytes() {
+        println!("{b}");
+    }
+
 }
