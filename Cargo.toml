@@ -15,5 +15,6 @@ members = [
     "enums",
     "packages",
     "packages/restaurant",
-    "collection"
+    "collection",
+    "panic"
 ]
