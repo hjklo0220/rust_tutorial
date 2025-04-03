@@ -1,5 +1,6 @@
 use std::error::Error;
 use std::fs::File;
+use std::net::IpAddr;
 
 use crate::result::recoverable;
 use crate::result::shortcut;
@@ -23,6 +24,12 @@ fn main() -> Result<(), Box<dyn Error>>{
 
     let text = String::from("\nhi");
     println!("{:?}", last_char_of_first_line(&text));
+
+    let home: IpAddr = "127.0.0.1"
+        .parse()
+        .expect("hardcoded IP address should be vaild");
+
+    println!("{home}");
 
     Ok(())
 }
