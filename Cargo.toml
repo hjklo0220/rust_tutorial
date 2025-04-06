@@ -16,5 +16,6 @@ members = [
     "packages",
     "packages/restaurant",
     "collection",
-    "panic"
+    "panic",
+    "generic"
 ]
