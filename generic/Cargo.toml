@@ -5,3 +5,4 @@ edition = "2024"
 
 [dependencies]
 aggregator = { path = "./aggregator" }
+lifetime = { path = "./lifetime" }

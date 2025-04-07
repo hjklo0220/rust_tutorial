@@ -4,6 +4,7 @@ use crate::largest::func;
 use crate::largest::point;
 
 use aggregator::{Summary, Tweet, NewsArticle};
+use lifetime::lifetime_main;
 
 fn main() {
     let number_list = vec![34, 50, 25, 100, 65];
@@ -68,6 +69,9 @@ fn main() {
     };
 
     println!("1 new tweet: {}", tweet.summarize());
+
+    //lifetime
+    lifetime_main();
 
 }
 
