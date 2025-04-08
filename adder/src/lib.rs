@@ -3,7 +3,11 @@ pub fn add(left: u64, right: u64) -> u64 {
 }
 
 pub fn add_two(a: i32) -> i32 {
-    a + 2
+    internal_adder(a, 2)
+}
+
+fn internal_adder(a: i32, b: i32) -> i32 {
+    a + b
 }
 
 pub fn greeting(name: &str) -> String {
@@ -43,6 +47,11 @@ fn prints_and_returns_10(a: i32) -> i32 {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn internal() {
+        assert_eq!(4, internal_adder(2, 2));
+    }
 
     #[test]
     #[ignore = "reason"]
@@ -88,7 +97,7 @@ mod tests {
     }
 
     #[test]
-    fn it_adds_two() {
+    fn it_adds_two2() {
         assert_eq!(4, add_two(2));
         assert_ne!(5, add_two(2));
     }
