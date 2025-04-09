@@ -17,5 +17,6 @@ members = [
     "packages/restaurant",
     "collection",
     "panic",
-    "generic"
+    "generic",
+    "minigrep"
 , "adder"]
