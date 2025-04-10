@@ -18,5 +18,7 @@ members = [
     "collection",
     "panic",
     "generic",
-    "minigrep"
-, "adder"]
+    "minigrep",
+    "adder",
+    "functional"
+]
