@@ -1,4 +1,3 @@
-use core::num;
 use std::{thread, time::Duration};
 
 #[derive(Debug, PartialEq, Clone, Copy)]
@@ -145,7 +144,22 @@ fn main() {
     // v1.iter().map(|x| x + 1);
 
     let v2: Vec<_> = v1.iter().map(|x| x + 1).collect();
-    assert_eq!(v2, vec![2, 3, 4])
+    assert_eq!(v2, vec![2, 3, 4]);
+
+    let mut raw = vec![0i32; 100]; // 실제 버퍼
+    let buffer: &mut [i32] = &mut raw;
+    let coefficients: [i64; 12] = [1; 12]; // dummy data
+    let qlp_shift: i16 = 2; // dummy shift
+
+    for i in 12..buffer.len() {
+        let prediction = coefficients.iter()
+            .zip(&buffer[i - 12..i])
+            .map(|(&c, &s)| c * s as i64)
+            .sum::<i64>() >> qlp_shift;
+        let delta = buffer[i];
+        buffer[i] = prediction as i32 + delta;
+    }
+    println!("{:?}", &buffer[..20]); // 일부 출력
 
 }
 
