@@ -20,5 +20,6 @@ members = [
     "generic",
     "minigrep",
     "adder",
-    "functional"
+    "functional",
+    "cargo"
 ]
