@@ -21,5 +21,6 @@ members = [
     "minigrep",
     "adder",
     "functional",
-    "cargo"
+    "cargo",
+    "smart_pointer"
 ]

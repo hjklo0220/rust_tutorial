@@ -11,6 +11,3 @@ opt-level = 3
 
 [dependencies]
 art = { path = "./art" }
-
-[package]
-name = "jun_test"
