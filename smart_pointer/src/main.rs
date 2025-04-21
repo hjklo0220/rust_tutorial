@@ -1,4 +1,5 @@
 use std::ops::Deref;
+use std::mem::drop;
 
 enum Message {
     Quit,
@@ -15,6 +16,16 @@ enum List {
 
 use crate::List::{Cons, Nil};
 
+struct CustomSmartPointer {
+    data: String,
+}
+
+impl Drop for CustomSmartPointer {
+    fn drop(&mut self) {
+        println!("Dropping CustomSmartPointer with data `{}`!", self.data);
+    }
+}
+
 fn main() {
     let b = Box::new(5);
     println!("b = {b}");
@@ -30,6 +41,16 @@ fn main() {
 
     let m = MyBox::new(String::from("Rust"));
     hello(&m);
+
+    let c = CustomSmartPointer {
+        data: String::from("my stuff"),
+    };
+    // c.drop();
+    drop(c);
+    let d = CustomSmartPointer {
+        data: String::from("other stuff"),
+    };
+    println!("CustomSmartPointers created")
 }
 
 struct MyBox<T>(T);
