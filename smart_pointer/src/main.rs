@@ -1,5 +1,6 @@
 use std::ops::Deref;
 use std::mem::drop;
+use std::rc::Rc;
 
 enum Message {
     Quit,
@@ -10,7 +11,7 @@ enum Message {
 
 #[derive(Debug)]
 enum List {
-    Cons(i32, Box<List>),
+    Cons(i32, Rc<List>),
     Nil,
 }
 
@@ -30,8 +31,8 @@ fn main() {
     let b = Box::new(5);
     println!("b = {b}");
 
-    let list = Cons(1, Box::new(Cons(2, Box::new(Cons(3, Box::new(Nil))))));
-    println!("{:?}", list);
+    // let list = Cons(1, Box::new(Cons(2, Box::new(Cons(3, Box::new(Nil))))));
+    // println!("{:?}", list);
 
     let x = 5;
     let y = MyBox::new(x);
@@ -50,7 +51,13 @@ fn main() {
     let d = CustomSmartPointer {
         data: String::from("other stuff"),
     };
-    println!("CustomSmartPointers created")
+    println!("CustomSmartPointers created");
+
+
+    let a = Rc::new(Cons(5, Rc::new(Cons(10, Rc::new(Nil)))));
+    let b = Cons(3, Rc::clone(&a));
+    let c = Cons(4, Rc::clone(&a));
+
 }
 
 struct MyBox<T>(T);
