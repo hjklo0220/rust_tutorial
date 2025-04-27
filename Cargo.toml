@@ -22,5 +22,6 @@ members = [
     "adder",
     "functional",
     "cargo",
-    "smart_pointer"
+    "smart_pointer",
+    "thread"
 ]
